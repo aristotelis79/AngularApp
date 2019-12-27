@@ -6,11 +6,14 @@ import { Component } from '@angular/core';
    <app-navbar></app-navbar>
     <h1>{{title}}</h1>
     <img src = '/assets/images/basic-shield.png'/>
-    <app-events-list #thumbnailChildReference ></app-events-list>
-      <button class="btn btn-lg" (click)="thumbnailChildReference.handleParentsAction('foo')"> Button - {{thumbnailChildReference.childValue}}</button>
+      <router-outlet></router-outlet>
+    <!-- <app-events-list #thumbnailChildReference ></app-events-list> 
+      <button class="btn btn-lg" (click)="thumbnailChildReference.handleParentsAction('foo')">
+        Button - {{thumbnailChildReference.childValue}}
+      </button>
   <div>
     <p *ngIf="thumbnailChildReference">{{thumbnailChildReference.childValue}}</p>
-  </div>
+  </div>-->
   `,
   styleUrls: ['./app.component.scss']
 })
