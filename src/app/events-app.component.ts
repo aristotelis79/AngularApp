@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
+  selector: 'events-app',
+  template: '<h1>{{title}}<h1>',
   styleUrls: ['./app.component.sass']
 })
-export class AppComponent {
+export class EventsAppComponent {
   title = 'angularApp';
 }
