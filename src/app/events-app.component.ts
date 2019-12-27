@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
   template: `
     <h1>{{title}}</h1>
     <img src = '/assets/images/basic-shield.png'/>
+    <events-list></events-list>
   `,
   styleUrls: ['./app.component.scss']
 })
