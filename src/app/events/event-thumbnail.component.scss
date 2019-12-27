@@ -2,6 +2,24 @@
       margin-left: 10px;
     }
 
+
     .well div {
-      color: #bbb;
+      color: rgb(12, 1, 1);
+      background-color: mix(#bbbbbb, #b8b8b8, $weight: 0.5);
+    }
+
+    .color-name {
+      color: rgb(9, 116, 116);
+    }
+
+    .green {
+      color: green !important;
+    }
+
+    .yellow {
+      color: yellow !important;
+    }
+
+    .bold {
+      font-weight: bold;
     }

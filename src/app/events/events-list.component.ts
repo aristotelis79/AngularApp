@@ -1,27 +1,31 @@
 import { Component, OnInit } from '@angular/core';
+import { EventService } from './shared/event.service';
+import { ToastService } from '../common/toast.service';
 
 @Component({
-  selector: 'events-list',
+  selector: 'app-events-list',
   templateUrl: './events-list.component.html',
-  styleUrls: ['./events-list.component.scss']
+  styleUrls: ['./events-list.component.scss'],
+  // styles: [`
+  //         .event-list{ color : pink;}
+  // `],
 })
 export class EventsListComponent implements OnInit {
-  event1 = {
-    id: 1,
-    name: 'Angular Connect',
-    date: '9/26/2036',
-    time: '10:00 am',
-    price: 599.99,
-    imageUrl: '/assets/images/angularconnect-shield.png',
-    location: {
-      address: '1057 DT',
-      city: 'London',
-      country: 'England'
-    }
-  };
-  constructor() { }
 
+  childValue = 'some child value in parent';
+  events = {};
+  constructor(private eventService: EventService, private toastService: ToastService) {
+  }
+
+  handleEventClicked(name: string) {
+    this.toastService.success(`${name} from servcie`);
+  }
+
+  handleParentsAction(name: string) {
+    alert(`clicked ${name} from parent`);
+  }
   ngOnInit() {
+    this.events = this.eventService.getEvents();
   }
 
 }
