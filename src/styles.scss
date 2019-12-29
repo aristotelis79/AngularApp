@@ -40,6 +40,17 @@ button {
   background-color: #f89406;
 }
 
+.well {
+  background-color: var(--colorlight);
+  padding: 20px;
+  margin: 20px;
+  min-height: 220px;
+}
+
+.right {
+  text-align: right;
+}
+
 .margin-20 {
   margin-left: 20px;
 }

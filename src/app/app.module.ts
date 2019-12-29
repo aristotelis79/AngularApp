@@ -15,6 +15,8 @@ import { appRoutes } from "./routes";
 import { NavbarComponent } from "./nav/navbar.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CreateSessionComponent } from './events/events-details/create-session.component';
+import { SessionListComponent } from './events/events-details/session-list.component';
+import { CollapsibleWellComponent } from './common/collapsible-well.component';
 
 @NgModule({
   imports: [
@@ -31,7 +33,9 @@ import { CreateSessionComponent } from './events/events-details/create-session.c
     EventsDetailsComponent,
     CreateEventComponent,
     Error404Component,
-    CreateSessionComponent
+    CreateSessionComponent,
+    SessionListComponent,
+    CollapsibleWellComponent
   ],
   providers: [
     {
