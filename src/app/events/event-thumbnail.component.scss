@@ -2,10 +2,22 @@
       margin-left: 10px;
     }
 
+    .well {
+      background-color: var(--color);
+      padding: 20px;
+      min-height: 255px;
 
-    .well div {
-      color: rgb(12, 1, 1);
-      background-color: mix(#bbbbbb, #b8b8b8, $weight: 0.5);
+      &:hover {
+        background-color: #485563;
+      }
+
+      div {
+        color: rgb(12, 1, 1);
+      }
+
+      .btn {
+        margin-top: 10px;
+      }
     }
 
     .color-name {

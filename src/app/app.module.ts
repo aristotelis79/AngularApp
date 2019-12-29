@@ -1,18 +1,26 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+import { RouterModule } from "@angular/router";
 
-import { EventsAppComponent } from './events-app.component';
-import { EventsListComponent } from './events/events-list.component';
-import { EventThumbnailComponent } from './events/event-thumbnail.component';
-import { NavbarComponent } from './nav/navbar.component';
-import { EventsDetailsComponent } from './events/events-details/events-details.component';
-import { RouterModule } from '@angular/router';
-import { appRoutes } from './routes';
-import { CreateEventComponent } from './events/create-event.component';
+import {
+  EventsListComponent,
+  EventThumbnailComponent,
+  EventsDetailsComponent,
+  CreateEventComponent,
+  checkDirtyState
+} from "./events/index";
+import { EventsAppComponent } from "./events-app.component";
+import { Error404Component } from "./errors/error404.component";
+import { appRoutes } from "./routes";
+import { NavbarComponent } from "./nav/navbar.component";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { CreateSessionComponent } from './events/events-details/create-session.component';
 
 @NgModule({
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
   declarations: [
@@ -21,8 +29,16 @@ import { CreateEventComponent } from './events/create-event.component';
     EventThumbnailComponent,
     NavbarComponent,
     EventsDetailsComponent,
-    CreateEventComponent
+    CreateEventComponent,
+    Error404Component,
+    CreateSessionComponent
+  ],
+  providers: [
+    {
+      provide: "canDeactivateCreateEvent",
+      useValue: checkDirtyState
+    }
   ],
   bootstrap: [EventsAppComponent]
 })
-export class AppModule { }
+export class AppModule {}

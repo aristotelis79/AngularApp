@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 body {
-  background-color: #6f8092;
+  background-color: var(--color);
 }
 
 .hoverwell:hover {
@@ -38,4 +38,40 @@ button {
 
 .toast-warning {
   background-color: #f89406;
+}
+
+.margin-20 {
+  margin-left: 20px;
+}
+
+em {
+  float: right;
+  color: #E05C65;
+  padding-left: 10px;
+}
+
+.error input,
+.error textarea,
+.error select {
+  background-color: #E3C3C5;
+}
+
+.error ::-webkit-input-placeholder,
+.error ::-webkit-textarea-placeholder,
+.error ::-webkit-select-placeholder {
+  color: #999;
+}
+
+.error ::-moz-placeholder {
+  color: #999;
+}
+
+.error :-moz-placeholder {
+  color: #999;
+}
+
+.error :ms-input-placeholder,
+.error :ms-textarea-placeholder,
+.error :ms-select-placeholder {
+  color: #999;
 }
