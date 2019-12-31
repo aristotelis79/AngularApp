@@ -7,16 +7,17 @@ import {
   EventThumbnailComponent,
   EventsDetailsComponent,
   CreateEventComponent,
-  checkDirtyState
+  CreateSessionComponent,
+  SessionListComponent,
+  checkDirtyState,
+  DurationPipe
 } from "./events/index";
 import { EventsAppComponent } from "./events-app.component";
 import { Error404Component } from "./errors/error404.component";
 import { appRoutes } from "./routes";
 import { NavbarComponent } from "./nav/navbar.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { CreateSessionComponent } from './events/events-details/create-session.component';
-import { SessionListComponent } from './events/events-details/session-list.component';
-import { CollapsibleWellComponent } from './common/collapsible-well.component';
+import { CollapsibleWellComponent } from "./common/collapsible-well.component";
 
 @NgModule({
   imports: [
@@ -35,7 +36,8 @@ import { CollapsibleWellComponent } from './common/collapsible-well.component';
     Error404Component,
     CreateSessionComponent,
     SessionListComponent,
-    CollapsibleWellComponent
+    CollapsibleWellComponent,
+    DurationPipe
   ],
   providers: [
     {

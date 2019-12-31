@@ -4,7 +4,11 @@ import { Component, OnInit, Input } from "@angular/core";
   selector: "app-collapsible-well",
   template: `
     <div (click)="toggleContent()" class="well pointable">
-      <h4><ng-content select="[well-title]"></ng-content></h4>
+      <h4>
+        <i *ngIf="!visible" class="fa fa-plus" style="float:right"></i>
+        <i *ngIf="visible" class="fa fa-minus" style="float:right"></i>
+        <ng-content select="[well-title]"></ng-content>
+      </h4>
       <ng-content *ngIf="visible" select="[well-body]"></ng-content>
     </div>
   `,
@@ -17,7 +21,8 @@ import { Component, OnInit, Input } from "@angular/core";
   ]
 })
 export class CollapsibleWellComponent implements OnInit {
-  visible: boolean = false;
+  @Input() visible: boolean = false;
+
   constructor() {}
 
   ngOnInit() {}
