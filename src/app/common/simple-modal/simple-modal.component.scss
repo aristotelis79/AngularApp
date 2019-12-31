@@ -1,0 +1,15 @@
+    .modal-body {
+      height: 250px;
+      overflow-y: scroll;
+      background-color: var(--colorlight);
+
+    }
+
+    .modal-content {
+      background-color: var(--color);
+    }
+
+    .list-group {
+      background-color: var(--color) !important;
+      color: white !important;
+    }

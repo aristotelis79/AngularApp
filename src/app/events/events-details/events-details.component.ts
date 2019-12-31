@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { EventService } from "../shared/event.service";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Params } from "@angular/router";
 import { IEvent, ISession } from "../shared";
 
 @Component({
@@ -38,6 +38,13 @@ export class EventsDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.event = this.eventService.getEvent(+this.route.snapshot.params.id);
+    this.route.params.forEach((p: Params) => {
+      //this code "reset" the state of component of his properties
+      this.event = this.eventService.getEvent(+p["id"]);
+      this.addMode = false; //reset to initial value when I route to an other page of this component
+    });
+
+    //this work only the first time besouse snapshot is like a static copy
+    //this.event = this.eventService.getEvent(+this.route.snapshot.params.id);
   }
 }
