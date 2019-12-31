@@ -19,6 +19,9 @@ import { NavbarComponent } from "./nav/navbar.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CollapsibleWellComponent } from "./common/collapsible-well.component";
 
+import { TOASTR_TOKEN, IToastr } from "./common/toast.service";
+declare let toastr: IToastr;
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -40,6 +43,10 @@ import { CollapsibleWellComponent } from "./common/collapsible-well.component";
     DurationPipe
   ],
   providers: [
+    {
+      provide: TOASTR_TOKEN,
+      useValue: toastr
+    },
     {
       provide: "canDeactivateCreateEvent",
       useValue: checkDirtyState

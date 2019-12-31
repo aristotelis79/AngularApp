@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
+import { ToastServiceV1 } from "./toastV1.service";
 
 @Component({
   selector: "app-collapsible-well",
@@ -23,7 +24,7 @@ import { Component, OnInit, Input } from "@angular/core";
 export class CollapsibleWellComponent implements OnInit {
   @Input() visible: boolean = false;
 
-  constructor() {}
+  constructor(private toastService: ToastServiceV1) {}
 
   ngOnInit() {}
 

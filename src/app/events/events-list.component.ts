@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { EventService } from "./shared/event.service";
-import { ToastService } from "../common/toast.service";
+import { ToastServiceV1 } from "../common/toastV1.service";
 import { ActivatedRoute } from "@angular/router";
 import { IEvent } from "./shared";
 
@@ -16,12 +16,12 @@ export class EventsListComponent implements OnInit {
   events: IEvent;
   constructor(
     // private eventService: EventService,
-    private toastService: ToastService,
+    private toastService: ToastServiceV1,
     private route: ActivatedRoute
   ) {}
 
   handleEventClicked(name: string) {
-    this.toastService.success(`${name} from servcie`);
+    this.toastService.myToastr.success(`${name} from servcie`);
   }
 
   handleParentsAction(name: string) {
