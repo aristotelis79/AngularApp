@@ -11,7 +11,8 @@ import {
   CreateSessionComponent,
   SessionListComponent,
   checkDirtyState,
-  DurationPipe
+  DurationPipe,
+  UpvoteComponent
 } from "./events/index";
 import { EventsAppComponent } from "./events-app.component";
 import { Error404Component } from "./errors/error404.component";
@@ -37,6 +38,7 @@ let jQuery = window["$"];
     RouterModule.forRoot(appRoutes)
   ],
   declarations: [
+    UpvoteComponent,
     EventsAppComponent,
     EventsListComponent,
     EventThumbnailComponent,

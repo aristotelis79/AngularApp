@@ -1,5 +1,14 @@
-import { Component, Input, OnChanges, SimpleChanges } from "@angular/core";
+import {
+  Component,
+  Input,
+  OnChanges,
+  SimpleChanges,
+  Inject
+} from "@angular/core";
 import { ISession } from "../shared/index";
+import { AuthService } from "../../user/auth.service";
+import { VoterService } from "./voter.service";
+import { IToastr, TOASTR_TOKEN } from "src/app/common";
 
 @Component({
   selector: "app-session-list",
@@ -12,7 +21,11 @@ export class SessionListComponent implements OnChanges {
   @Input() sortBy: string;
   visibleSessions: ISession[] = [];
 
-  constructor() {}
+  constructor(
+    public auth: AuthService,
+    private voterService: VoterService,
+    @Inject(TOASTR_TOKEN) private toastr: IToastr
+  ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (!this.sessions) return;
@@ -40,6 +53,30 @@ export class SessionListComponent implements OnChanges {
       default:
         return this.sessions;
     }
+  }
+
+  userHasVoted(session: ISession) {
+    if (!this.auth.isAuthenticated()) return false;
+
+    return this.voterService.userHasVoted(
+      session,
+      this.auth.currentUser.userName
+    );
+  }
+
+  toggleVote(session: ISession) {
+    if (!this.auth.isAuthenticated()) {
+      this.toastr.warning("Must login first");
+      return;
+    }
+
+    var currentUserName = this.auth.currentUser.userName;
+    if (this.userHasVoted(session)) {
+      this.voterService.deleteVoter(session, currentUserName);
+    } else {
+      this.voterService.addVoter(session, currentUserName);
+    }
+    if (this.sortBy === "votes") this.visibleSessions.sort(sortByVoteAsc);
   }
 }
 
