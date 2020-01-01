@@ -12,7 +12,8 @@ import {
   SessionListComponent,
   checkDirtyState,
   DurationPipe,
-  UpvoteComponent
+  UpvoteComponent,
+  LocationValidatorDirective
 } from "./events/index";
 import { EventsAppComponent } from "./events-app.component";
 import { Error404Component } from "./errors/error404.component";
@@ -51,7 +52,8 @@ let jQuery = window["$"];
     CollapsibleWellComponent,
     DurationPipe,
     SimpleModalComponent,
-    ModalTriggerDirective
+    ModalTriggerDirective,
+    LocationValidatorDirective
   ],
   providers: [
     {

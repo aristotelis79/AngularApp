@@ -7,13 +7,11 @@ import { EventService } from "./shared/event.service";
   templateUrl: "./create-event.component.html",
   styleUrls: ["./create-event.component.scss"]
 })
-export class CreateEventComponent implements OnInit {
+export class CreateEventComponent {
   isNotSaved: boolean = true;
-  newEventForm: any;
+  newEvent;
 
   constructor(private router: Router, private eventService: EventService) {}
-
-  ngOnInit() {}
 
   saveEvent(formValues) {
     this.eventService.saveEvent(formValues);
