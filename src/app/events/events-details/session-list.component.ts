@@ -19,6 +19,7 @@ export class SessionListComponent implements OnChanges {
   @Input() sessions: ISession[];
   @Input() filterBy: string;
   @Input() sortBy: string;
+  @Input() eventId: number;
   visibleSessions: ISession[] = [];
 
   constructor(
@@ -72,9 +73,9 @@ export class SessionListComponent implements OnChanges {
 
     var currentUserName = this.auth.currentUser.userName;
     if (this.userHasVoted(session)) {
-      this.voterService.deleteVoter(session, currentUserName);
+      this.voterService.deleteVoter(this.eventId, session, currentUserName);
     } else {
-      this.voterService.addVoter(session, currentUserName);
+      this.voterService.addVoter(this.eventId, session, currentUserName);
     }
     if (this.sortBy === "votes") this.visibleSessions.sort(sortByVoteAsc);
   }
