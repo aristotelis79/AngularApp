@@ -38,11 +38,18 @@ export class EventsDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.params.forEach((p: Params) => {
-      //this code "reset" the state of component of his properties
-      this.event = this.eventService.getEvent(+p["id"]);
+    this.route.data.forEach(data => {
+      this.event = data["event"]; //e
       this.addMode = false; //reset to initial value when I route to an other page of this component
     });
+
+    // this.route.params.forEach((p: Params) => {
+    //   //this code "reset" the state of component of his properties
+    //   this.eventService.getEvent(+p["id"]).subscribe((e: IEvent) => {
+    //     this.event = e;
+    //     this.addMode = false; //reset to initial value when I route to an other page of this component
+    //   });
+    // });
 
     //this work only the first time besouse snapshot is like a static copy
     //this.event = this.eventService.getEvent(+this.route.snapshot.params.id);
