@@ -35,11 +35,11 @@ export class ProfileComponent implements OnInit {
   saveProfile(formValues) {
     if (!this.profileForm.valid) return;
 
-    this.authService.updateCurrentUser(
-      formValues.firstName,
-      formValues.lastName
-    );
-    this.toastr.success("Profile Saved");
+    this.authService
+      .updateCurrentUser(formValues.firstName, formValues.lastName)
+      .subscribe(() => {
+        this.toastr.success("Profile Saved");
+      });
   }
 
   validateField(field: string) {
@@ -58,6 +58,12 @@ export class ProfileComponent implements OnInit {
       return "Must start with letter";
 
     return null;
+  }
+
+  logout() {
+    this.authService.logout().subscribe(() => {
+      this.router.navigate(["/user/login"]);
+    });
   }
 
   cancel() {
