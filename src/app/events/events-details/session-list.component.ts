@@ -28,7 +28,7 @@ export class SessionListComponent implements OnChanges {
     @Inject(TOASTR_TOKEN) private toastr: IToastr
   ) {}
 
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(): void {
     if (!this.sessions) return;
     this.visibleSessions = this.filterSessions(this.filterBy);
     this.sortBy === "name"
