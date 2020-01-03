@@ -3,6 +3,7 @@
 
 module.exports = function (config) {
   config.set({
+    files: ['./node_modules/toastr/build/toastr.min.js'],
     basePath: '',
     frameworks: ['jasmine', '@angular-devkit/build-angular'],
     plugins: [
@@ -25,14 +26,8 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'], // 'ChromeDebugging'],
+    browsers: ['Chrome'],
     singleRun: false,
     restartOnFileChange: true,
-    customLaunchers: {
-      ChromeDebugging: {
-        base: 'Chrome',
-        flags: ['--remote-debugging-port=9876']
-      }
-    },
   });
 };
