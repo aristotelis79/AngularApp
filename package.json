@@ -22,7 +22,7 @@
     "@angular/router": "~8.2.14",
     "bootstrap": "^4.4.1",
     "font-awesome": "^4.7.0",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "ngf-server": "^1.0.2",
     "rxjs": "~6.4.0",
     "toastr": "^2.1.4",
