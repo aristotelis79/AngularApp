@@ -1,0 +1,14 @@
+<div>
+  <h1>Upcoming Angula Events</h1>
+  <hr />
+  <!-- <event-thumbnail #referenceToChildComp [event]="event1" (eventClick)="handleEventClicked($event)"></event-thumbnail>
+    <button class="btn btn-primary" (click)=referenceToChildComp.callFromParent()>Call child</button> -->
+  <div class="row">
+    <div *ngFor="let eventItem of events" class="col-md-5">
+      <event-thumbnail #referenceToChildComp [event]="eventItem" (eventClick)="handleEventClicked($event)"
+        (click)="handleThumbnailClick(eventItem.name)">
+      </event-thumbnail>
+      <button class=" btn btn-primary test-btn" (click)=referenceToChildComp.callFromParent()>Call child</button>
+    </div>
+  </div>
+</div>
