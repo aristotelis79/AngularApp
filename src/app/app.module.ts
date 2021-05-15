@@ -21,6 +21,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CollapsibleWellComponent } from './common/collapsible-well.component';
 import { CreateSessionComponent } from './events/events-details/create-session.component';
 
+/// global Toastr
 declare let toastr;
 @NgModule({
   imports: [
@@ -44,7 +45,8 @@ declare let toastr;
   ],
   providers: [
     EventService,
-    EventRouteActivator,
+    EventRouteActivator, 
+    // or same as EventRouteActivator {provide: EventRouteActivator, useClass: EventRouteActivator}
     EventListResolver,
     AuthService,
     {
