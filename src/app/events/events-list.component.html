@@ -5,8 +5,8 @@
     <button class="btn btn-primary" (click)=referenceToChildComp.callFromParent()>Call child</button> -->
   <div class="row">
     <div *ngFor="let eventItem of events" class="col-md-5">
-      <event-thumbnail #referenceToChildComp [event]="eventItem" (eventClick)="handleEventClicked($event)"
-        (click)="handleThumbnailClick(eventItem.name)">
+      <event-thumbnail #referenceToChildComp [event]="eventItem" (eventClick)="handleEventClicked($event)">
+        <!-- (click)="handleThumbnailClick(eventItem.name)"> -->
       </event-thumbnail>
       <button class=" btn btn-primary test-btn" (click)=referenceToChildComp.callFromParent()>Call child</button>
     </div>
