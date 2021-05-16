@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../../shared/event.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { IEvent, ISession } from './../../shared/index';
 
 @Component({
@@ -15,16 +15,29 @@ import { IEvent, ISession } from './../../shared/index';
 export class EventDetailsComponent implements OnInit {
   event: IEvent;
   addMode: boolean;
-  filterBy = 'all';
-  sortBy = 'votes';
+  filterBy: string;
+  sortBy: string;
 
   constructor(private eventService: EventService, private route: ActivatedRoute) {
 
   }
 
   ngOnInit() {
-    const id = this.route.snapshot.params.id;
-    this.event = this.eventService.getEvent(+id);
+    this.route.params.forEach((params: Params) => {
+      this.event = this.eventService.getEvent(+params['id']);
+      //Important need to reset the state after change url
+      this.initState();
+    });
+
+    //old
+    //const id = this.route.snapshot.params.id; //snapshot is nor objervable
+    //this.event = this.eventService.getEvent(+id);//The plus do it number
+  }
+
+  initState() {
+    this.addMode = false;
+    this.filterBy = 'all';
+    this.sortBy = 'votes';
   }
 
   addSession(){
