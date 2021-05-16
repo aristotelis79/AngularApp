@@ -8,7 +8,7 @@ import { ISession } from 'src/app/shared';
 })
 export class UpvoteComponent implements OnInit {
   @Input() count: number;
-  @Input() set voted(val) {
+  @Input() set voted(val: any) {
     this.iconColor = val ? 'red' : 'white';
   }
   @Output() vote = new EventEmitter();

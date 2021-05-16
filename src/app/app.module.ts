@@ -16,7 +16,8 @@ import { EventsListComponent,
   SessionListComponent,
   DurationPipe,
   UpvoteComponent,
-  VoterService} from './events/index';
+  VoterService,
+  LocationValidator} from './events/index';
 import {
   TOASTR_TOKEN,
   JQ_TOKEN,
@@ -53,7 +54,8 @@ const jQuery  = window['$'];
     DurationPipe,
     SimpleModalComponent,
     ModalTriggerDirective,
-    UpvoteComponent
+    UpvoteComponent,
+    LocationValidator
   ],
   providers: [
     EventService,
