@@ -14,7 +14,9 @@ import { EventsListComponent,
   EventRouteActivator,
   EventListResolver,
   SessionListComponent,
-  DurationPipe  } from './events/index';
+  DurationPipe,
+  UpvoteComponent,
+  VoterService} from './events/index';
 import {
   TOASTR_TOKEN,
   JQ_TOKEN,
@@ -50,13 +52,15 @@ const jQuery  = window['$'];
     CollapsibleWellComponent,
     DurationPipe,
     SimpleModalComponent,
-    ModalTriggerDirective
+    ModalTriggerDirective,
+    UpvoteComponent
   ],
   providers: [
     EventService,
     EventRouteActivator,
     // or same as EventRouteActivator {provide: EventRouteActivator, useClass: EventRouteActivator}
     EventListResolver,
+    VoterService,
     AuthService,
     {
        provide: 'canDeactivateCreateEvent',
