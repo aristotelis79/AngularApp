@@ -54,7 +54,7 @@ const jQuery  = window['$'];
   ],
   providers: [
     EventService,
-    EventRouteActivator, 
+    EventRouteActivator,
     // or same as EventRouteActivator {provide: EventRouteActivator, useClass: EventRouteActivator}
     EventListResolver,
     AuthService,
