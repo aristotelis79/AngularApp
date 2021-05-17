@@ -6,6 +6,7 @@ import { IUser } from './user.model';
 
 @Injectable()
 export class AuthService {
+
   curretUser: IUser;
 
   constructor(private http: HttpClient) { }
@@ -32,8 +33,19 @@ export class AuthService {
     return !!this.curretUser;
   }
 
+  checkAuthenticationStatus() {
+    this.http.get('/api/currentIdentity')
+    .pipe(tap(data => {
+      if (data instanceof Object){ this.curretUser = (data as IUser); }
+    }))
+    .subscribe();
+  }
+
   updateCurrentUser(firstName: any, lastName: any) {
     this.curretUser.firstName = firstName;
     this.curretUser.lastName = lastName;
+
+    const options = { headers: new HttpHeaders({'Content-Type': 'application/json'})};
+    return this.http.put(`/api/users/${this.curretUser.id}`, this.curretUser, options);
   }
 }
