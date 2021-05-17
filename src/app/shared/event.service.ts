@@ -22,13 +22,18 @@ export class EventService {
   //   return subject;
   // }
 
-  getEvent(id: number): IEvent {
-    return EVENTS.find(e => e.id === id);
-  }
+  // getEvent(id: number): IEvent {
+  //   return EVENTS.find(e => e.id === id);
+  // }
 
   getEvents(): Observable<IEvent[]>{
     return this.http.get<IEvent[]>('/api/events')
     .pipe(catchError(this.handleError<IEvent[]>('getEvents', [])));
+  }
+
+  getEvent(id: number): Observable<IEvent>{
+    return this.http.get<IEvent>('/api/events/'+ id)
+    .pipe(catchError(this.handleError<IEvent>('getEvent')));
   }
 
   private handleError<T>(operation = 'operation', result?: T){

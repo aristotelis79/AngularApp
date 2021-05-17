@@ -11,8 +11,9 @@ import { EventsListComponent,
   EventService,
   EventDetailsComponent,
   CreateEventComponent,
-  EventRouteActivator,
+  //EventRouteActivator,
   EventListResolver,
+  EventResolver,
   SessionListComponent,
   DurationPipe,
   UpvoteComponent,
@@ -29,7 +30,6 @@ import { AuthService } from './user/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateSessionComponent } from './events/events-details/create-session.component';
 import { HttpClientModule } from '@angular/common/http';
-
 /// global Toastr
 declare let toastr: IToastr; // = window['$'];
 const jQuery  = window['$'];
@@ -61,9 +61,10 @@ const jQuery  = window['$'];
   ],
   providers: [
     EventService,
-    EventRouteActivator,
+    //EventRouteActivator, Not in use
     // or same as EventRouteActivator {provide: EventRouteActivator, useClass: EventRouteActivator}
     EventListResolver,
+    EventResolver,
     VoterService,
     AuthService,
     {

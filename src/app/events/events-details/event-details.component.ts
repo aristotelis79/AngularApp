@@ -23,13 +23,24 @@ export class EventDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.params.forEach((params: Params) => {
-      this.event = this.eventService.getEvent(+params['id']);
+
+    // user resolver data
+    this.route.data.forEach((data) => {
+      this.event = data.event;
       //Important need to reset the state after change url
       this.initState();
     });
 
-    //old
+    //with http call throught rx
+    // this.route.params.forEach((params: Params) => {
+    //   //this do the call to http with rxjs
+    //   // this.eventService.getEvent(+params['id']).subscribe((event: IEvent) => {
+    //   // this.event = event;
+    //   // this.initState();
+    //   // });
+    // });
+
+    //static old
     //const id = this.route.snapshot.params.id; //snapshot is nor objervable
     //this.event = this.eventService.getEvent(+id);//The plus do it number
   }
