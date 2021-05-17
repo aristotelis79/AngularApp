@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, EventEmitter } from '@angular/core';
 import { Observable, of, Subject } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -9,11 +9,11 @@ export class EventService {
 
   constructor(private http: HttpClient){}
 
-  saveEvent(event: any) {
-    event.id = 999;
-    event.session = [];
-    EVENTS.push(event);
-  }
+  // saveEvent(event: any) {
+  //   event.id = 999;
+  //   event.session = [];
+  //   EVENTS.push(event);
+  // }
 
   //when was static data
   // getEvents(): Observable<IEvent[]> {
@@ -26,6 +26,11 @@ export class EventService {
   //   return EVENTS.find(e => e.id === id);
   // }
 
+  // updateEvent(event: IEvent) {
+  //   const index = EVENTS.findIndex(x => x.id = event.id);
+  //   EVENTS[index] = event;
+  // }
+
   getEvents(): Observable<IEvent[]>{
     return this.http.get<IEvent[]>('/api/events')
     .pipe(catchError(this.handleError<IEvent[]>('getEvents', [])));
@@ -36,16 +41,10 @@ export class EventService {
     .pipe(catchError(this.handleError<IEvent>('getEvent')));
   }
 
-  private handleError<T>(operation = 'operation', result?: T){
-    return (error: any): Observable<T> => {
-      console.error(error);
-      return of(result as T);
-    }
-  }
-
-  updateEvent(event: IEvent) {
-    const index = EVENTS.findIndex(x => x.id = event.id);
-    EVENTS[index] = event;
+  saveEvent(event: IEvent): Observable<IEvent> {
+    const options = { headers: new HttpHeaders({'Content-Type': 'application/json'})};
+    return this.http.post<IEvent>('api/events', event, options)
+      .pipe(catchError(this.handleError<IEvent>('saveEvent')));
   }
 
   searchSession(searchTerm: string) {
@@ -68,6 +67,13 @@ export class EventService {
       emiter.emit(results);
     }, 300);
     return emiter;
+  }
+
+  private handleError<T>(operation = 'operation', result?: T){
+    return (error: any): Observable<T> => {
+      console.error(error);
+      return of(result as T);
+    };
   }
 }
 
