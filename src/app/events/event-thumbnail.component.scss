@@ -1,0 +1,46 @@
+    .pad-left {
+      margin-left: 10px;
+    }
+
+    .well {
+      &:hover {
+        background-color: #485563;
+      }
+
+      div {
+        color: rgb(12, 1, 1);
+      }
+
+      .btn {
+        margin-top: 10px;
+      }
+    }
+
+    .color-name {
+      color: rgb(9, 116, 116);
+    }
+
+    .green {
+      color: green !important;
+    }
+
+    .yellow {
+      color: yellow !important;
+    }
+
+    .bold {
+      font-weight: bold;
+    }
+
+    .event-title {
+      min-height: 70px;
+    }
+
+    .min-row-height {
+      min-height: 50px;
+    }
+
+    .btn-wrp {
+      text-align: right;
+      vertical-align: bottom;
+    }
